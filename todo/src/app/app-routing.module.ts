@@ -1,3 +1,4 @@
+import { TodoComponent } from './components/todo/todo.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorComponent } from './components/error/error.component';
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent,
+    canActivate: [RouteGuardService],
+  },
+  {
+    path: 'todos/:id',
+    component: TodoComponent,
     canActivate: [RouteGuardService],
   },
   { path: '**', component: ErrorComponent },

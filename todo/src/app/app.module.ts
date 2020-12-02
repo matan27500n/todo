@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     LogoutComponent,
     MenuComponent,
     WelcomeComponent,
+    TodoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

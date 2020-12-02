@@ -1,5 +1,21 @@
 <h1>Welcome page</h1>
+
 <div class="container">
   <p>welcome {{user}}</p>
   <p>You can manage your todo <a [routerLink]="['/todo']" routerLinkActive="router-link-active">here</a></p>
+</div>
+
+<div class="container">
+  Click here to get a customized welcome message:
+  <button (click)="getWelcomeMessage()" class="btn btn-success">get Welcome Message</button>
+</div> <br>
+
+<div class="container">
+  Click here to get a customized welcome message with a name:
+  <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">get Welcome Message</button>
+</div>
+
+<div class="container" *ngIf="welcomeMessageFromService">
+  <H2>Your customized welcome message:</H2>
+  {{welcomeMessageFromService}}
 </div>
