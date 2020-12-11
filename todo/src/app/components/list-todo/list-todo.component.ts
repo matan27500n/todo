@@ -18,20 +18,6 @@ export class Todo {
   styleUrls: ['./list-todo.component.css'],
 })
 export class ListTodoComponent implements OnInit {
-  // todos = [
-  //   new Todo(1, 'Learn to Dance', false, new Date()),
-  //   new Todo(2, 'Become an expert at Angular', false, new Date()),
-  //   new Todo(3, 'Visit Spain', false, new Date()),
-  //   // { id: 1, description: 'Learn to Dance' },
-  //   // { id: 2, description: 'Become an expert at Angular' },
-  //   // { id: 3, description: 'Visit Spain' },
-  // ];
-
-  // todo = {
-  //   id: 1,
-  //   description: 'Learn to dance',
-  // };
-
   todos: Todo[];
 
   message: string;
@@ -54,11 +40,13 @@ export class ListTodoComponent implements OnInit {
   }
 
   public deleteTodo(id: number) {
-    let username = this.basicAuthenticationService.getAuthenticatedUser();
-    this.todoService.deleteTodo(username, id).subscribe((response) => {
-      this.message = `Delete of todo ${id} Successful!`;
-      this.refreshTodos();
-    });
+    if (confirm('Are you sure you want to delete this task?')) {
+      let username = this.basicAuthenticationService.getAuthenticatedUser();
+      this.todoService.deleteTodo(username, id).subscribe((response) => {
+        this.message = `Delete of todo ${id} Successful!`;
+        this.refreshTodos();
+      });
+    }
   }
 
   public updateTodo(id: number) {
@@ -67,5 +55,11 @@ export class ListTodoComponent implements OnInit {
 
   public addTodo() {
     this.router.navigate(['todos', -1]);
+  }
+
+  public changeIsCompleted(item: Todo) {
+    item.done === true;
+    this.refreshTodos();
+    alert('task is done');
   }
 }

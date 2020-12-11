@@ -13,6 +13,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TodoComponent } from './components/todo/todo.component';
+import { RegisterComponent } from './components/register/register.component';
+import { PasswordForgotComponent } from './components/password-forgot/password-forgot.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { TodoComponent } from './components/todo/todo.component';
     MenuComponent,
     WelcomeComponent,
     TodoComponent,
+    RegisterComponent,
+    PasswordForgotComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

@@ -1,3 +1,5 @@
+import { PasswordForgotComponent } from './components/password-forgot/password-forgot.component';
+import { RegisterComponent } from './components/register/register.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,6 +13,12 @@ import { RouteGuardService } from './services/route-guard.service';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [RouteGuardService],
+  },
+  { path: 'password-forgot', component: PasswordForgotComponent },
   {
     path: 'welcome/:name',
     component: WelcomeComponent,

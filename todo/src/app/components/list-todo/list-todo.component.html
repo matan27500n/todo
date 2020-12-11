@@ -17,9 +17,20 @@
       <tr *ngFor="let item of todos">
         <td>{{item.description}}</td>
         <td>{{item.targetDate | date}}</td>
-        <td>{{item.done}}</td>
-        <td><button (click)="updateTodo(item.id)" class="btn btn-success">Update</button></td>
-        <td><button (click)="deleteTodo(item.id)" class="btn btn-warning">Delete</button></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{item.done}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button class="dropdown-item" (click)="changeIsCompleted(item)">True</button>
+              <button class="dropdown-item">False</button>
+            </div>
+          </div>
+        </td>
+        <td><button (click)="updateTodo(item.id)" class="btn btn-warning">Update</button></td>
+        <td><button (click)="deleteTodo(item.id)" class="btn btn-danger">Delete</button></td>
       </tr>
     </tbody>
   </table>
