@@ -11,8 +11,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent implements OnInit {
-  user = '';
+   user: string = '';
+  count = 0;
   welcomeMessageFromService: string;
+  isConst = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,22 +22,10 @@ export class WelcomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.user = this.route.snapshot.params['name'];
-  }
-
-  public getWelcomeMessage() {
-    this.service.executeHelloWorldBeanService().subscribe(
-      (response) => {
-        this.handleSuccessfulResponse(response);
-      },
-      (error) => {
-        this.handleErrorResponse(error);
-      }
-    );
+      this.user = this.route.snapshot.params['name'];
   }
 
   public getWelcomeMessageWithParameter() {
-    console.log(this.user);
     this.service
       .executeHelloWorldBeanServiceWithPathVariable(this.user)
       .subscribe(

@@ -16,7 +16,6 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [RouteGuardService],
   },
   { path: 'password-forgot', component: PasswordForgotComponent },
   {

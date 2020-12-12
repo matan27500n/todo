@@ -11,6 +11,7 @@ export const AUTHENTICATED_USER = 'authenticaterUser';
   providedIn: 'root',
 })
 export class BasicAuthenticationService {
+  users: string[] = [];
   constructor(private http: HttpClient) {}
 
   public isUserLoggedIn() {
@@ -22,10 +23,23 @@ export class BasicAuthenticationService {
     return sessionStorage.getItem(AUTHENTICATED_USER);
   }
 
+  public isUserExists(username: string) {
+    console.log('users username: ' + this.users[0]);
+    console.log('users password: ' + this.users[1]);
+    if (username === this.users[0]) {
+      return this.users[1];
+    }
+    return '';
+  }
+
   public getAuthenticatedToken() {
     if (this.getAuthenticatedUser()) {
       return sessionStorage.getItem(TOKEN);
     }
+  }
+
+  public getUsers() {
+    return this.users;
   }
 
   public executeAuthenticationService(username: string, password: string) {
@@ -50,6 +64,10 @@ export class BasicAuthenticationService {
         map((data) => {
           sessionStorage.setItem(AUTHENTICATED_USER, username);
           sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+          this.users.push(username);
+          this.users.push(password);
+          console.log('users username: ' + this.users[0]);
+          console.log('users password: ' + this.users[1]);
           return data;
         })
       );

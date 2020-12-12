@@ -1,15 +1,15 @@
 <h1>Welcome {{user}}</h1>
 
 <div class="container">
-  <p>You can manage your todo <a [routerLink]="['/todo']" routerLinkActive="router-link-active">here</a></p>
+  <p>You can manage your todos <a [routerLink]="['/todo']" routerLinkActive="router-link-active">here</a></p>
 </div>
 
 <div class="container">
-  Click here to get a customized welcome message with a name:
-  <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">get Welcome Message</button>
+  Click here to get the tip of the day:
+  <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">Get Tip</button>
 </div>
 
 <div class="container" *ngIf="welcomeMessageFromService">
-  <H2>Your customized welcome message:</H2>
+  <H2>Your Daily Tip:</H2>
   {{welcomeMessageFromService}}
 </div>
