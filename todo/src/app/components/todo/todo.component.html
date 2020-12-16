@@ -20,6 +20,14 @@
         (ngModelChange)="todo.targetDate = $event" class="form-control" name="targetDate" required>
     </fieldset>
 
+    <fieldset class="form-group">
+      <label>Task is done?</label>
+      <select class="browser-default custom-select" [(ngModel)]="todo.done" required #isDone="ngModel" name="isDone">
+        <option value="false">False</option>
+        <option value="true">True</option>
+      </select>
+    </fieldset>
+
     <button type="submit" class="btn btn-success">Save</button>
   </form>
 </div>

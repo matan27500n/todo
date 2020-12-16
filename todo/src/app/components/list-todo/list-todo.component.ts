@@ -57,9 +57,13 @@ export class ListTodoComponent implements OnInit {
     this.router.navigate(['todos', -1]);
   }
 
-  public changeIsCompleted(item: Todo) {
-    item.done === true;
-    this.refreshTodos();
-    alert('task is done');
+  public changeIsCompleted(id: number) {
+    if (confirm('Your task is done, do you want to delete it?')) {
+      let username = this.basicAuthenticationService.getAuthenticatedUser();
+      this.todoService.deleteTodo(username, id).subscribe((response) => {
+        this.message = `Delete of todo ${id} Successful!`;
+        this.refreshTodos();
+      });
+    }
   }
 }
