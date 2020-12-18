@@ -1,4 +1,3 @@
-import { User } from './../components/register/register.component';
 import { API_URL, TODO_JPA_API_URL } from './../app.constants';
 import { Todo } from './../components/list-todo/list-todo.component';
 import { HttpClient } from '@angular/common/http';
@@ -10,8 +9,8 @@ import { Injectable } from '@angular/core';
 export class TodoDataService {
   constructor(private http: HttpClient) {}
 
-  public registerUser(user: User) {
-    return this.http.post(`${API_URL}/register-user`, user);
+  public registerUser(username: string, password: string) {
+    return this.http.post(`${TODO_JPA_API_URL}/users/${username}/${password}`,null);
   }
 
   public retrieveAllTodos(username: string) {

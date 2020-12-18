@@ -2,21 +2,14 @@ import { BasicAuthenticationService } from './../../services/basic-authenticatio
 import { TodoDataService } from './../../services/todo-data.service';
 import { Component, OnInit } from '@angular/core';
 
-export class User {
-  public constructor(
-    public id: number,
-    public username: string,
-    public password: string
-  ) {}
-}
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  user = new User(4, '', '');
+  username = '';
+  password = '';
   message: string = '';
   invalidLogin = false;
   constructor(
@@ -27,16 +20,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   public registerCustomer() {
-    this.user.id = 5;
-    this.todoDataService.registerUser(this.user).subscribe(
+    this.todoDataService.registerUser(this.username, this.password).subscribe(
       (res) => {
-        this.message = 'user create successfully!!';
-        alert('right');
+        this.message = 'You registered successfully! Welcome ' + this.username;
       },
       (err) => {
-        this.invalidLogin = true;
-        this.message = err.message;
-        alert('wrong');
+        alert(err.message);
       }
     );
   }
